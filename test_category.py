@@ -25,7 +25,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_add_category_transport_in_base(self):
         text_answer('Wallet добавь категорию расходов транспорт')
-        category = self.session.query(Category).all().ftrst()
+        category = self.session.query(Category).first()
         self.assertEqual('транспорт', category.name)
         self.assertFalse(category.is_profit)
 
