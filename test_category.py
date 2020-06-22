@@ -1,19 +1,15 @@
 import unittest
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
-from base import Base
 from Category import Category
+from Database import Database
+from TypeFlow import TypeFlow
 from answer import text_answer
 
 
 class MyTestCase(unittest.TestCase):
 
     def setUp(self) -> None:
-        engine = create_engine('sqlite:///:memory:', echo=True)
-        Base.metadata.create_all(engine)
-        self.session = sessionmaker(bind=engine)()
+        self.session = Database.get_instance().session()
 
     def test_add_category_transport(self):
         answer = text_answer('Wallet добавь категорию расходов транспорт')
@@ -26,9 +22,6 @@ class MyTestCase(unittest.TestCase):
     def test_add_category_transport_in_base(self):
         text_answer('Wallet добавь категорию расходов транспорт')
         category = self.session.query(Category).first()
+        self.assertIsNotNone(category)
         self.assertEqual('транспорт', category.name)
-        self.assertFalse(category.is_profit)
-
-
-if __name__ == '__main__':
-    unittest.main()
+        self.assertEqual(TypeFlow.PROFIT, category.type)
