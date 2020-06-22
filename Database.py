@@ -19,5 +19,10 @@ class Database:
             cls.__instance = Database()
         return cls.__instance
 
+    @classmethod
+    def new_base(cls):
+        cls.__instance = Database()
+        return cls.__instance
+
     def session(self) -> Session:
         return sessionmaker(bind=self.engine)()

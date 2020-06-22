@@ -9,7 +9,7 @@ from answer import text_answer
 class MyTestCase(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.session = Database.get_instance().session()
+        self.session = Database.new_base().session()
 
     def test_add_category_transport(self):
         answer = text_answer('Wallet добавь категорию расходов транспорт')
@@ -24,4 +24,15 @@ class MyTestCase(unittest.TestCase):
         category = self.session.query(Category).first()
         self.assertIsNotNone(category)
         self.assertEqual('транспорт', category.name)
+        self.assertEqual(TypeFlow.LESS, category.type)
+
+    def test_add_category_work_in_base(self):
+        text_answer('Wallet добавь категорию доходов работа')
+        category = self.session.query(Category).first()
+        self.assertIsNotNone(category)
+        self.assertEqual('работа', category.name)
         self.assertEqual(TypeFlow.PROFIT, category.type)
+
+    def test_add_bad_type_category(self):
+        answer = text_answer('Wallet добавь категорию доходов работа')
+        self.assertEqual('Не понял тип категории попробуйте снова.', answer)
