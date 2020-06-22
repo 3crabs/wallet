@@ -1,2 +1,3 @@
 def text_answer(text: str):
-    return 'Категория транспорт добавлена!'
+    category_name = text.split(' ')[3]
+    return f'Категория {category_name} добавлена!'
