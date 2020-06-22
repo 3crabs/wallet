@@ -34,5 +34,9 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(TypeFlow.PROFIT, category.type)
 
     def test_add_bad_type_category(self):
-        answer = text_answer('Wallet добавь категорию доходов работа')
+        answer = text_answer('Wallet добавь категорию приходов работа')
         self.assertEqual('Не понял тип категории попробуйте снова.', answer)
+
+    def test_add_bad_category(self):
+        answer = text_answer('Wallet добавь категорию работа')
+        self.assertEqual('Не понимаю что вы хотите.', answer)

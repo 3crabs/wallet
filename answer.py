@@ -1,6 +1,7 @@
 from Category import Category
 from Database import Database
 from TypeFlow import TypeFlow
+from WalletException import WalletException
 
 
 def calc_flow(text: str):
@@ -8,6 +9,7 @@ def calc_flow(text: str):
         return TypeFlow.PROFIT
     if text == 'расходов':
         return TypeFlow.LESS
+    raise WalletException('Не понял тип категории попробуйте снова.')
 
 
 def add_category(type_flow_str: str, category_name: str):
@@ -26,6 +28,13 @@ def text_answer(text: str):
     if text.split(' ')[0] != 'wallet':
         return None
 
-    # добавление категории
-    if text.split(' ')[1] + ' ' + text.split(' ')[2] == 'добавь категорию':
-        return add_category(text.split(' ')[3], text.split(' ')[4])
+    try:
+        words = text.split(' ')
+
+        # добавление категории
+        if len(words) == 5 and f'{words[1]} {words[2]}' == 'добавь категорию':
+            return add_category(words[3], words[4])
+
+        return 'Не понимаю что вы хотите.'
+    except WalletException as we:
+        return we.__str__()
