@@ -1,3 +1,3 @@
 class TypeFlow:
-    PROFIT = 1
-    LESS = 2
+    PROFIT = 'profit'
+    LESS = 'less'
