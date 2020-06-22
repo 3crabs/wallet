@@ -6,11 +6,11 @@ from answer import text_answer
 class MyTestCase(unittest.TestCase):
 
     def test_add_category_transport(self):
-        answer = text_answer('Wallet добавь категорию транспорт')
+        answer = text_answer('Wallet добавь категорию расходов транспорт')
         self.assertEqual('Категория транспорт добавлена!', answer)
 
     def test_add_category_work(self):
-        answer = text_answer('Wallet добавь категорию работа')
+        answer = text_answer('Wallet добавь категорию доходов работа')
         self.assertEqual('Категория работа добавлена!', answer)
 
 
