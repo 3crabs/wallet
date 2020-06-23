@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
 
-from TypeFlow import TypeFlow
-from base import Base
+from models.TypeFlow import TypeFlow
+from models.Base import Base
 
 
 class Category(Base):

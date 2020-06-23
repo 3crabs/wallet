@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 
-from base import Base
+from models.Base import Base
 
 
 class Flow(Base):

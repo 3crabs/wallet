@@ -1,7 +1,7 @@
-from Category import Category
+from models.Category import Category
 from Database import Database
-from Flow import Flow
-from TypeFlow import TypeFlow
+from models.Flow import Flow
+from models.TypeFlow import TypeFlow
 from WalletException import WalletException
 
 

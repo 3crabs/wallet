@@ -1,8 +1,8 @@
 import unittest
 
-from Category import Category
+from models.Category import Category
 from Database import Database
-from TypeFlow import TypeFlow
+from models.TypeFlow import TypeFlow
 from answer import text_answer
 
 
