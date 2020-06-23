@@ -1,5 +1,6 @@
 from Category import Category
 from Database import Database
+from Flow import Flow
 from TypeFlow import TypeFlow
 from WalletException import WalletException
 
@@ -23,8 +24,11 @@ def add_category(type_flow_str: str, category_name: str):
 
 def add_flow(money_str: str, category_name: str):
     session = Database.get_instance().session()
-    if not session.query(Category).filter_by(name=category_name).all():
+    categories = session.query(Category).filter_by(name=category_name).all()
+    if not categories:
         return 'Категория транспорт не найдена'
+    session.add(Flow(int(money_str), categories[0].id))
+    session.commit()
     return f'В {category_name} добавлена {money_str}р!'
 
 
