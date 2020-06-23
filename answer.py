@@ -21,6 +21,10 @@ def add_category(type_flow_str: str, category_name: str):
     return f'Категория {category_name} добавлена!'
 
 
+def add_flow(money: str, category_name: str):
+    return 'В транспорт добавлена 1000р!'
+
+
 def text_answer(text: str):
     text = text.lower()
 
@@ -34,6 +38,10 @@ def text_answer(text: str):
         # добавление категории
         if len(words) == 5 and f'{words[1]} {words[2]}' == 'добавь категорию':
             return add_category(words[3], words[4])
+
+        # добавление потока
+        if len(words) == 5 and f'{words[1]}' == 'добавь':
+            return add_flow(words[2], words[4])
 
         return 'Не понимаю что вы хотите.'
     except WalletException as we:
