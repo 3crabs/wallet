@@ -6,7 +6,7 @@ from TypeFlow import TypeFlow
 from answer import text_answer
 
 
-class MyTestCase(unittest.TestCase):
+class TestCategory(unittest.TestCase):
 
     def setUp(self) -> None:
         self.session = Database.new_base().session()
