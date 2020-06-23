@@ -21,8 +21,8 @@ def add_category(type_flow_str: str, category_name: str):
     return f'Категория {category_name} добавлена!'
 
 
-def add_flow(money: str, category_name: str):
-    return 'В транспорт добавлена 1000р!'
+def add_flow(money_str: str, category_name: str):
+    return f'В транспорт добавлена {money_str}р!'
 
 
 def text_answer(text: str):

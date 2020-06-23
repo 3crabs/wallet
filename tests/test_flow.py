@@ -12,3 +12,7 @@ class TestFlow(unittest.TestCase):
     def test_add_flow_1000_category_transport(self):
         answer = text_answer('Wallet добавь 1000 в транспорт')
         self.assertEqual('В транспорт добавлена 1000р!', answer)
+
+    def test_add_flow_2000_category_transport(self):
+        answer = text_answer('Wallet добавь 2000 в транспорт')
+        self.assertEqual('В транспорт добавлена 2000р!', answer)
