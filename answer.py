@@ -22,7 +22,10 @@ def add_category(type_flow_str: str, category_name: str):
 
 
 def add_flow(money_str: str, category_name: str):
-    return f'В транспорт добавлена {money_str}р!'
+    session = Database.get_instance().session()
+    if not session.query(Category).filter_by(name=category_name).all():
+        return 'Категория транспорт не найдена'
+    return f'В {category_name} добавлена {money_str}р!'
 
 
 def text_answer(text: str):
