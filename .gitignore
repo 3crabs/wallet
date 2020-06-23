@@ -1,2 +1,3 @@
 venv
 database_name.txt
+tests/database_name.txt
